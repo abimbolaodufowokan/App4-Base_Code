@@ -20,7 +20,7 @@ Brief Description of Goal of Code:
 To make a diagonstic that determines if you're having a heart attack or a stroke specfically as a woman, and to have a resizable image.
  
 Known Issues:
-Not sure yet
+The results page isn't showing up
 Ignore this error message if you see it using the javaScript console: Error with Permissions-Policy header: Origin trial controlled feature not enabled: 'interest-cohort'.
 
 References:
@@ -30,17 +30,13 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	
 <head> 
 	<title>Hello World! Are you haveing a heart attack or a stroke, girl?</title>  
-]	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<link rel="stylesheet" href="w3.css">
 	<link rel="stylesheet" href="w3-colors-flat.css">
-</head> 
-
-<script>
-
 	<head>
 <script>
-    var heart_count = 0;    <!-- counts how many questions are answered as heart attack/stroke. -->
+    var heart_count = 0;    // counts how many questions are answered as heart attack
     var stroke_count = 0;
 
     function heartAdd(){
@@ -50,7 +46,8 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     function strokeAdd(){
         stroke_count++;
     }
-<!-- actually adds them up -->
+
+    // actually adds them up
     function showResult(){
 
         var total = heart_count + stroke_count;
@@ -62,18 +59,16 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
             heartPercent = Math.round((heart_count / total) * 100);
             strokePercent = Math.round((stroke_count / total) * 100);
         }
-<!-- calculates the precentage of which result stroke or heart attack. -->
+
+        // calculates the percentage
         var resultText = document.getElementById("results");
 
         resultText.innerHTML =
-            "heart: " + heartPercent + "%<br>" +
-            "stroke: " + strokePercent + "%";
-    } <!-- Displays the precentage as a number so that the results button has a function to call to. -->
+            "Heart attack: " + heartPercent + "%<br>" +
+            "Stroke: " + strokePercent + "%";
+    } // Displays the percentage
 </script>
 </head>
-
-</script>	
-
 
 <!-- THIS STYLE CODE HELPS MAKE YOUR APP LOOK GOOD. PROBABLY DONT MESS WITH IT -->
 <style>	
