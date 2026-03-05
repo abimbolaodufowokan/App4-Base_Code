@@ -17,10 +17,10 @@ Timothy Riedel
 triedel@utexas.edu
  
 Brief Description of Goal of Code:
-blah, blah, blah,
+To make a diagonstic that determines if you're having a heart attack or a stroke specfically as a woman, and to have a resizable image.
  
 Known Issues:
-blah, blah, blah, blah
+Not sure yet
 Ignore this error message if you see it using the javaScript console: Error with Permissions-Policy header: Origin trial controlled feature not enabled: 'interest-cohort'.
 
 References:
@@ -29,7 +29,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 -->
 	
 <head> 
-	<title>Hello World</title>  
+	<title>Hello World! Are you haveing a heart attack or a stroke, girl?</title>  
 ]	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<link rel="stylesheet" href="w3.css">
@@ -38,7 +38,39 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 
 <script>
 
-	//YOUR JAVASCRIPT GOES HERE
+	<head>
+<script>
+    var heart_count = 0;    <!-- counts how many questions are answered as heart attack/stroke. -->
+    var stroke_count = 0;
+
+    function heartAdd(){
+        heart_count++;
+    }
+
+    function strokeAdd(){
+        stroke_count++;
+    }
+<!-- actually adds them up -->
+    function showResult(){
+
+        var total = heart_count + stroke_count;
+
+        var heartPercent = 0;
+        var strokePercent = 0;
+
+        if(total > 0){
+            heartPercent = Math.round((heart_count / total) * 100);
+            strokePercent = Math.round((stroke_count / total) * 100);
+        }
+<!-- calculates the precentage of which result stroke or heart attack. -->
+        var resultText = document.getElementById("results");
+
+        resultText.innerHTML =
+            "heart: " + heartPercent + "%<br>" +
+            "stroke: " + strokePercent + "%";
+    } <!-- Displays the precentage as a number so that the results button has a function to call to. -->
+</script>
+</head>
 
 </script>	
 
@@ -69,7 +101,103 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 <body>
 	
 	<!-- HERE IS WHERE ALL OF YOUR HTML PAGES GO -->
-	REPLACE THIS TEXT
+	<div id="header" class="w3-container w3-flat-carrot">
+	<h1>Heart attack or Stroke (women symptoms only!)?</h1>
+</div>
+	
+<div id="content" class="w3-container">
+	<p>Are you a woman and you can't tell if you're having a heart attack or a stroke because all of the symptoms we learn are catered to men, so answer a few questions to see if you're having a stroke or a heart attack!</p>
+	
+	<a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a>
+	
+	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
+ 	
+	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+</div> <!-- adding this because it seems to be missing????? -->
+	
+<div class="page" id="one">    <!-- Determines the id of the page, so we can call to it -->
+	<div id="header" class="w3-container w3-flat-carrot">
+		<h1>Question 1</h1>  <!--Labeling that will display in the heading -->
+	</div>
+	
+    	<div id="content" class="w3-container">  <!--Seperates this code from the heading-->
+        <p>Is your pain spreading to your jaw, neck, and upper back, OR is your pain sudden in your head?</p>    <!-- Displays the question -->
+    	<a href="#two" onclick="heartAdd()" class="w3-btn w3-black">Pain is spreading to jaw, neck, and upper back</a>
+<a href="#two" onclick="strokeAdd()" class="w3-btn w3-black">Pain is in my head</a>   <!-- onclick adds to the tally of which answers are Cold/Allergy symptoms -->
+		</div>
+</div>
+
+<div class="page" id="two">   <!-- Determines the id of the page, so we can call to it -->
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 2</h1> <!--Labeling that will display in the heading -->
+	</div>
+	
+	<div id="content" class="w3-container">  <!--Seperates this code from the heading-->
+		<p>Is your breathing in hiccups OR do you have shortness of breath?</p> <!-- Displays the question -->
+	<a href="#three" onclick="strokeAdd()" class="w3-btn w3-black">hiccups</a>
+<a href="#three" onclick="heartAdd()" class="w3-btn w3-black">shortness of breath</a> <!-- onclick adds to the tally of which answers are Cold/Allergy symptoms -->
+	</div>
+</div>	
+
+<div class="page" id="three"> <!-- Determines the id of the page, so we can call to it -->
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 3</h1> <!--Labeling that will display in the heading -->
+	</div>
+	
+	<div id="content" class="w3-container">  <!--Seperates this code from the heading-->
+		<p>Are you experiencing facial drooping, slurred speech, confusion, or vision loss, OR are you lightheaded and fainting?</p> <!-- Displays the question -->
+	<a href="#four" onclick="strokeAdd()" class="w3-btn w3-black">Facial drooping, slurred speech, etc</a>
+<a href="#four" onclick="heartAdd()" class="w3-btn w3-black">Lightheaded</a> <!-- onclick adds to the tally of which answers are stroke/heart attack symptoms -->
+	</div>
+</div>	
+<div class="page" id="four"> <!-- Determines the id of the page, so we can call to it -->
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 4</h1> <!--Labeling that will display in the heading -->
+	</div>
+	
+	<div id="content" class="w3-container">  <!--Seperates this code from the heading-->
+		<p>Are you experiencing Extreme, unexplained fatigue or indigestion OR Sudden behavioral changes, agitation, or hallucinations?</p> <!-- Displays the question -->
+	<a href="#five" onclick="strokeAdd()" class="w3-btn w3-black">sudden behavourial changes</a>
+<a href="#five" onclick="heartAdd()" class="w3-btn w3-black">fatigue</a> <!-- onclick adds to the tally of which answers are stroke/heart attack symptoms -->
+	</div>
+</div>		
+<div class="page" id="five"> <!-- Determines the id of the page, so we can call to it -->
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 5</h1> <!--Labeling that will display in the heading -->
+	</div>
+	
+	<div id="content" class="w3-container">  <!--Seperates this code from the heading-->
+		<p>Are you experiencing Pressure, squeezing, or fullness in the center of the chest OR Sudden numbness or weakness, especially on one side of the body?</p> <!-- Displays the question -->
+	<a href="#six" onclick="strokeAdd()" class="w3-btn w3-black">sudden weakness</a>
+<a href="#six" onclick="heartAdd()" class="w3-btn w3-black">pressure in chest</a> <!-- onclick adds to the tally of which answers are stroke/heart attack symptoms -->
+	</div>
+</div>	
+	<div class="page" id="six"> <!-- Determines the id of the page, so we can call to it -->
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 6</h1> <!--Labeling that will display in the heading -->
+	</div>
+	
+	<div id="content" class="w3-container">  <!--Seperates this code from the heading-->
+		<p>Are you experiencing flu like symptoms OR are you getting brain fog or memory loss?</p> <!-- Displays the question -->
+	<a href="#result" onclick="heartAdd()" class="w3-btn w3-black">flu like</a>
+<a href="#result" onclick="strokeAdd()" class="w3-btn w3-black">brain fog</a> <!-- onclick adds to the tally of which answers are stroke/heart attack symptoms -->
+	</div>
+</div>	
+		<div class="page" id="result">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Results</h1>
+	</div>
+    <button onclick="showResult()">See Results</button>  <!--Button for results -->
+
+    <p id="results"></p>
+
+    </script>
+
+</body>
+</html>
+<footer class="w3-bottom w3-container w3-flat-carrot">
+	<p>Abi's DIY website!</p>
+</footer>
 	
 </body>
 </html>
